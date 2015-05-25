@@ -1,0 +1,43 @@
+def main():
+    pass
+
+if __name__ == '__main__':
+    main()
+
+def get_float (prompt):
+    choice = -1
+    while choice == - 1:
+        try:
+            choice = float(input(prompt))
+        except ValueError:
+            print ("Not a number. Please enter bid again")
+
+#main routine
+highestbid = 0
+bids = []
+names = []
+numbids = 0
+
+reserve = get_float("What is the reserve price?")
+
+name = ""
+while name.upper != "F":
+    print ("Highest bid so far is - $", highestbid)
+    name = str(input("What is your name?"))
+    if name.upper() != "F":
+        bid = get_float ("What is your bid?")
+    if bid > highestbid:
+                highestbid = bid
+                bids.append(bid)
+                names.append(name)
+                numbids += 1
+    else:
+        print ("Sorry", name, "that bid is not high enough. Please make another, higher bid.")
+
+if highestbid >= reserve:
+    print ("Auction won by", (names[numbids - 1]), "with a bid of - $", (bids[numbids-1]))
+else:
+    print ("Reserve price was not met")
+
+for i in range (numbids):
+    print (names[i] + bids[i])
