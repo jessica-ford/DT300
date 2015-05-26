@@ -1,0 +1,29 @@
+class Movie:
+ def __init__(title, producer, director, date, length, rating, genre, cost, revenue):
+    self.title = title
+    self.producer = producer
+    self.director = director
+    self.date = date
+    self.length = length
+    self.rating = rating
+    self.genre = genre
+    self.cost = cost
+    self.revenue = revenue
+ 
+ def get_netprofit(self):
+     return self.revenue - self.cost
+ 
+ def display_info(self):
+     print(self.title, "was directed by", self.director, "and produced by", self.producer, ". Release date =", self.date, ".     ", self.title, "is", self.length, "with a rating of", self.rating, ". It is a ", self.genre, ". The movie cost" self.cost     ,"to make and made", self.revenue, ". This makes a net profit of", get_netprofit)
+
+ 
+# main routine
+if __name__ == "__main__":
+ import doctest
+ doctest.testmod(verbose = False)
+ movie1 = Movie("Shawshank Redemption", Niki Marvin, Frank Darabont, September 10 1994, 142, M, drama, 25, 100  )
+ movie2 = Movie("Wolf of Wall Street", Martin Scorsese, Martin Scorsese, 2013, 179 minutes, R18, black comedy/biography, 100 , 392  )
+ movie1.display_info()
+ movie2.display_info()
+ 
+ 
