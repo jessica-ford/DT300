@@ -1,0 +1,69 @@
+#load tkinter library
+from tkinter import *
+import tkinter.messagebox
+import string
+
+def processdata():
+#process data, note access to tkinter variables
+    uname= name.get()
+    uname = string.capwords(uname)
+    print(uname)
+    nameEntry.delete(0,END)
+    print(num.get())
+    print(genre.get())
+    return
+
+
+def Quit():
+  #  mExit = messagebox.askyesno(title="Quit", message="Are you sure")
+    mExit = messagebox.askokcancel(title="Quit", message="Are you sure")
+    print(mExit)
+    if mExit >0: #1 is True 0 is False
+        mGui.destroy()
+    return
+
+mGui=Tk()
+
+#variable types that are used by tkinter
+name=StringVar()
+num =IntVar()
+genre=StringVar()
+
+#primary window
+mGui.geometry('450x450+50+30') #+50 +30 give starting postion on screen
+mGui.title('Library')
+mGui.configure(background = 'midnight blue')
+
+#Simple label used for header
+mlabel = Label(mGui,text='Book Stock Management',fg='navy')
+mlabel.pack()
+
+#data entry label and Entry field for text and integer. Includes insertion of default values
+#note the text variables as name and gae as declared above
+nameEntryl = Label(mGui,text='Name of book',fg='royal blue')
+nameEntryl.pack()
+nameEntry = Entry(mGui,textvariable=name)
+nameEntry.insert ('10', 'noname')
+nameEntry.pack()
+
+numEntryl = Label(mGui,text='Number of copies in stock',fg='royal blue')
+numEntryl.pack()
+numEntry = Entry(mGui, textvariable=num)
+numEntry.insert(10,1)
+numEntry.pack()
+
+#obtain data from a pull down list
+genreEntry1 = Label(mGui, text='What is the genre of the book:',fg="royal blue")
+genreEntry1.pack()
+genreEntry=OptionMenu(mGui, genre, "Science Fiction", "Sport", "Biography", "Political Thriller", )
+genreEntry.pack()
+
+#submit button ie event used to initiatiate a command ie processdata
+mbutton = Button(mGui,text="Submit",command=processdata, fg='navy')
+mbutton.pack()
+
+#QUIT button ie event to quit
+qbutton = Button(mGui,text="Division by zero detected the universe has ended",command=Quit, fg='red')
+qbutton.pack()
+
+mGui.mainloop()
